@@ -10,25 +10,25 @@
     <div class="container">
         <div class="music-player">
             <nav>
-                <div class="circle">
-                    <i class="fa-solid fa-angle-left"></i>
-                </div>
-                <div class="circle">
+                <div class="circle" onclick="toggleDropdown()">
                     <i class="fa-solid fa-bars"></i>
+                    <ul id="songList" class="dropdown-menu">
+                        <!-- songs will be dynamically added here -->
+                    </ul>
                 </div>
             </nav>
-            <img src="media/orm.jpeg" class="song-img">
+            <img src="media/please icon.jpeg" class="song-img">
             <h1>Please Please Please</h1>
             <p>Orm Kornnaphat</p>
             
             <audio id="song">
-                <source src="media/Orm Kornnaphat  - Please Please Please.mp3" type="audio/mpeg">
+                <source src="" type="audio/mpeg">
             </audio>
             <input type="range" value="0" id="progress">
             <div class="controls">
                 <div onclick="skipBackward()"><i class="fa-solid fa-backward"></i></div>
                 <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
-                <div onclick="skipForward()"><i class="fa-solid fa-forward"></i></div>
+                <div onclick="skipNext()"><i class="fa-solid fa-forward"></i></div>
             </div>
             <footer class="footer">
                 <p>paintitbblue</p>
@@ -37,56 +37,7 @@
         
     </div>
 
-<script>
-
-    let progress = document.getElementById("progress");
-    let song = document.getElementById("song");
-    let ctrlIcon = document.getElementById("ctrlIcon");
-
-    song.onloadedmetadata = function(){
-        progress.max = song.duration;
-        progress.value = song.currentTime;
-    }
-
-    function playPause(){
-        if(ctrlIcon.classList.contains("fa-pause")){
-            song.pause();
-            ctrlIcon.classList.remove("fa-pause");
-            ctrlIcon.classList.add("fa-play");
-        }
-        else{
-            song.play();
-            ctrlIcon.classList.add("fa-pause");
-            ctrlIcon.classList.remove("fa-play");
-        }
-    }
-
-    song.addEventListener("timeupdate", () => {
-        progress.value = song.currentTime;
-    })
-
-    // if(song.play()){
-    //     setInterval(()=>{
-    //         progress.value = song.currentTime;
-    //     }, 500);
-    // }
-
-    progress.onchange = function(){
-        // song.play();
-        song.currentTime = progress.value;
-        // ctrlIcon.classList.add("fa-pause");
-        // ctrlIcon.classList.remove("fa-play");
-    }
-
-    function skipBackward(){
-        song.currentTime = Math.max(0, song.currentTime - 5);
-    }
-
-    function skipForward(){
-        song.currentTime = Math.min(song.duration, song.currentTime + 5);
-    }
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
