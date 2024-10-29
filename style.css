@@ -135,17 +135,20 @@ nav .circle:hover{
     background-color: rgb(252, 226, 240, 0.9);
     position: absolute;
     display: none;
-    top: 0px;
-    left: 50px;
+    top: 60px;
+    left: 35px;
     border: 1px solid #f87cbe;
     border-radius: 5px;
-    width: 220px;
+    width: 200px;
+    z-index: 1;
+    transform: scale(1);
 }
 .dropdown-menu li{
     padding: 5px;
     cursor: pointer;
     color: #f87cbe;
     border-bottom: 1px solid #f567ae;
+    font-size: 13px;
 }
 .dropdown-menu li:hover{
     background-color: #eba5cb;
@@ -154,6 +157,10 @@ nav .circle:hover{
 }
 .circle{
     position: relative;
+}
+.circle:hover .dropdown-menu,
+.circle.open .dropdown-menu {
+    display: block;
 }
 
 /* dark mode */
@@ -258,11 +265,13 @@ body.dark-mode{
     background-color: rgb(252, 226, 240, 0.9);
     position: absolute;
     display: none;
-    top: 0px;
-    left: 50px;
+    top: 60px;
+    left: 35px;
     border: 1px solid #5a8ee2;
     border-radius: 5px;
-    width: 220px;
+    width: 200px;
+    z-index: 1;
+    transform: scale(1);
 }
 .dark-mode .dropdown-menu li{
     padding: 5px;

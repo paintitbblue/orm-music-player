@@ -50,6 +50,11 @@ let songArtist = document.querySelector('p');
 let songImg = document.querySelector('.song-img');
 let songList = document.getElementById('songList');
 
+const circle = document.querySelector('.circle');
+circle.addEventListener('click', () => {
+    circle.classList.toggle('open')
+});
+
 function loadSong(index) {
     const songData = currentSongs[index];
     song.src = songData.src;
