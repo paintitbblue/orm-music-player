@@ -33,7 +33,7 @@ nav .circle{
     color: #f479b6;
     box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 }
 nav .circle:hover{
     transform: scale(1.2);
