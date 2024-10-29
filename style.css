@@ -33,6 +33,10 @@ nav .circle{
     color: #f479b6;
     box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
     cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+nav .circle:hover{
+    transform: scale(1.2);
 }
 .song-img{
     width: 220px;
@@ -241,4 +245,28 @@ body.dark-mode{
     border-radius: 50px;
     border: 5px solid #fff;
     box-shadow: 0 10px 60px rgba(124, 164, 251, 0.22);
+}
+.dark-mode .dropdown-menu{
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    background-color: rgb(252, 226, 240, 0.9);
+    position: absolute;
+    display: none;
+    top: 0px;
+    left: 50px;
+    border: 1px solid #5a8ee2;
+    border-radius: 5px;
+    width: 220px;
+}
+.dark-mode .dropdown-menu li{
+    padding: 5px;
+    cursor: pointer;
+    color: #5a8ee2;
+    border-bottom: 1px solid #5a8ee2;
+}
+.dark-mode .dropdown-menu li:hover{
+    background-color: #85a8df;
+    color: #fff;
+    border-radius: 5px;
 }
