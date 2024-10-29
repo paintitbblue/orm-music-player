@@ -38,11 +38,6 @@ nav .circle{
 nav .circle:hover{
     transform: scale(1.2);
 }
-@media (hover: none) {
-    nav .circle:hover{
-        transform: none;
-    }
-}
 .song-img{
     width: 220px;
     border-radius: 50px;
@@ -288,4 +283,17 @@ body.dark-mode{
     margin: 0;
     color: #747576;
     font-size: 10px;
+}
+@media (hover: none) {
+    nav .circle:hover{
+        transform: none;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .dropdown-menu {
+        width: 100vw;
+        left: 0;
+        padding: 15px;
+        font-size: 15px;
+    }
 }
