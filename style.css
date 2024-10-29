@@ -38,6 +38,11 @@ nav .circle{
 nav .circle:hover{
     transform: scale(1.2);
 }
+@media (hover: none) {
+    nav .circle:hover{
+        transform: none;
+    }
+}
 .song-img{
     width: 220px;
     border-radius: 50px;
