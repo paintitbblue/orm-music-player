@@ -291,7 +291,7 @@ body.dark-mode{
 }
 @media only screen and (max-width: 768px) {
     .dropdown-menu {
-        width: 100vw;
+        width: 220px;
         left: 0;
         padding: 15px;
         font-size: 15px;
