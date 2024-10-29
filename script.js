@@ -1,4 +1,4 @@
-const songs = [
+const lightModeSongs = [
     {
         name: "Please Please Please",
         artist: "Orm Kornnaphat",
@@ -19,16 +19,39 @@ const songs = [
     }
 ];
 
+const darkModeSongs = [
+    {
+        name: "Princess",
+        artist: "Lingling Kwong",
+        src: "media/princess.mp3",
+        img: "media/princess icon.jpeg"
+    },
+    {
+        name: "Yesterday Once More",
+        artist: "Lingling Kwong",
+        src: "media/yesterday once more.mp3",
+        img: "media/yesterday icon.jpeg"
+    },
+    {
+        name: "Like You",
+        artist: "Lingling Kwong",
+        src: "media/like you.mp3",
+        img: "media/like you icon.jpeg"
+    }
+];
+
 let currentSongIndex = 0;
+let currentSongs = lightModeSongs;
 let progress = document.getElementById("progress");
 let song = document.getElementById("song");
 let ctrlIcon = document.getElementById("ctrlIcon");
 let songTitle = document.querySelector('h1');
 let songArtist = document.querySelector('p');
 let songImg = document.querySelector('.song-img');
+let songList = document.getElementById('songList');
 
 function loadSong(index) {
-    const songData = songs[index];
+    const songData = currentSongs[index];
     song.src = songData.src;
     songTitle.textContent = songData.name;
     songArtist.textContent = songData.artist;
@@ -52,24 +75,28 @@ function playPause(){
 
 // Skip to next song
 function skipNext(){
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    currentSongIndex = (currentSongIndex + 1) % currentSongs.length;
     loadSong(currentSongIndex);
+    playPause();
 }
 
 // Skip to previous song
 function skipBackward(){
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    currentSongIndex = (currentSongIndex - 1 + currentSongs.length) % currentSongs.length;
     loadSong(currentSongIndex);
+    playPause();
 }
 
-// Populate dropdown with songs
-const songList = document.getElementById('songList');
-songs.forEach((songData, index) => {
-    let li = document.createElement('li');
-    li.textContent = `${songData.name}`;
-    li.onclick = () => selectSong(index);
-    songList.appendChild(li);
-});
+// populate the dropdown with songs
+function populateSongList() {
+    songList.innerHTML = '';
+    currentSongs.forEach((songData, index) => {
+        let li = document.createElement('li');
+        li.textContent = `${songData.name}`;
+        li.onclick = () => selectSong(index);
+        songList.appendChild(li);
+    })
+}
 
 // Function to load and play selected song from dropdown
 function selectSong(index) {
@@ -98,9 +125,6 @@ song.onended = function() {
     skipNext();
 }
 
-// Load first song initially
-loadSong(currentSongIndex);
-
 // Function to toggle the visibility of the dropdown menu
 function toggleDropdown() {
     const songList = document.getElementById('songList');
@@ -110,3 +134,41 @@ function toggleDropdown() {
         songList.style.display = 'block';
     }
 }
+
+// check for saved dark mode preference on page load
+window.onload = function () {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode')
+        switchSongList(); // use dark mode songs
+    } else {
+        populateSongList(); // use light mode
+    }
+}
+
+// function to toggle dark mode
+function toggleDarkMode() {
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode')
+        localStorage.setItem('darkMode', 'disabled') // save preference
+    } else {
+        document.body.classList.add('dark-mode')
+        localStorage.setItem('darkMode', 'enabled')
+    }
+    switchSongList();
+}
+
+// function to switch song list based on dark mode
+function switchSongList() {
+    if (document.body.classList.contains('dark-mode')) {
+        currentSongs = darkModeSongs; // switch to dark mode songs
+    } else {
+        currentSongs = lightModeSongs; // switch to light mode songs
+    }
+    currentSongIndex = 0;
+    loadSong(currentSongIndex);
+    populateSongList();
+}
+
+// Load first song initially
+loadSong(currentSongIndex);
+populateSongList();
