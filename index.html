@@ -10,17 +10,23 @@
     <div class="container">
         <div class="music-player">
             <nav>
+                <!-- Song list button -->
                 <div class="circle" onclick="toggleDropdown()">
                     <i class="fa-solid fa-bars"></i>
                     <ul id="songList" class="dropdown-menu">
                         <!-- songs will be dynamically added here -->
                     </ul>
                 </div>
-                <!-- add dark mode toggle button -->
-                <div class="circle" onclick="toggleDarkMode()">
+                <!-- dark mode toggle button -->
+                <div class="circle" id="darkModeToggle"  onclick="toggleDarkMode()">
                     <i class="fa-solid fa-moon"></i>
                 </div>
+                <!-- light mode toggle button -->
+                <div class="circle" id="lightModeToggle" onclick="toggleLightMode()" style="display: none;">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
             </nav>
+            
             <img src="media/please icon.jpeg" class="song-img">
             <h1>Please Please Please</h1>
             <p>Orm Kornnaphat</p>
