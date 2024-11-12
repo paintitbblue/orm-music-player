@@ -137,8 +137,9 @@ nav .circle:hover{
     width: 200px;
     z-index: 100;
     transform: scale(1);
+    display: none;
 }
-.dropdown-menu .show-dropdown {
+.show-dropdown {
     display: block;
 }
 .dropdown-menu li{
@@ -156,7 +157,6 @@ nav .circle:hover{
 .circle{
     position: relative;
 }
-.circle:hover .dropdown-menu,
 .circle.open .dropdown-menu {
     display: block;
 }

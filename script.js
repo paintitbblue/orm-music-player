@@ -137,6 +137,21 @@ function toggleDropdown() {
     songList.classList.toggle('show-dropdown');
 }
 
+document.querySelector('.circle').addEventListener('click', function(event) {
+    event.stopPropagation();
+    toggleDropdown();
+});
+
+// close the dropdown if clicked outside of it
+document.addEventListener('click', function(event) {
+    const songList = document.getElementById('songList');
+    const circleIcon = document.querySelector('.circle');
+
+    if (!songList.contains(event.target) && !circleIcon.contains(event.target)) {
+        songList.classList.remove('show-dropdown');
+    }
+})
+
 // initialize theme on page load
 window.onload = function () {
     const savedTheme = localStorage.getItem('theme');
