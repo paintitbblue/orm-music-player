@@ -145,48 +145,65 @@ window.onload = function () {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        document.getElementById('lightModeToggle').style.display = 'block';
-        document.getElementById('darkModeToggle').style.display = 'none';
     } else {
         document.body.classList.add('light-mode');
-        document.getElementById('lightModeToggle').style.display = 'none';
-        document.getElementById('darkModeToggle').style.display = 'block';
     }
+    updateIcons();
     loadSong(currentSongIndex);
 }
 
-// function to toggle dark mode
+// // toggle dark mode
 // function toggleDarkMode() {
-//     if (document.body.classList.contains('dark-mode')) {
-//         document.body.classList.remove('dark-mode')
-//         localStorage.setItem('darkMode', 'disabled') // save preference
-//     } else {
-//         document.body.classList.add('dark-mode')
-//         localStorage.setItem('darkMode', 'enabled')
-//     }
+//     document.body.classList.remove('light-mode');
+//     document.body.classList.add('dark-mode');
+//     localStorage.setItem('theme', 'dark');
+//     // switch icons
+//     document.getElementById('darkModeToggle').style.display = 'none';
+//     document.getElementById('lightModeToggle').style.display = 'block'
 //     switchSongList();
 // }
 
-// toggle dark mode
-function toggleDarkMode() {
-    document.body.classList.remove('light-mode');
-    document.body.classList.add('dark-mode');
-    localStorage.setItem('theme', 'dark');
-    // switch icons
-    document.getElementById('darkModeToggle').style.display = 'none';
-    document.getElementById('lightModeToggle').style.display = 'block'
-    switchSongList();
-}
+// // toggle light mode
+// function toggleLightMode() {
+//     document.body.classList.remove('dark-mode');
+//     document.body.classList.add('light-mode');
+//     localStorage.setItem('theme', 'light');
+//     // switch icons
+//     document.getElementById('darkModeToggle').style.display = 'none';
+//     document.getElementById('lightModeToggle').style.display = 'block';
+//     switchSongList();
+// }
 
 // toggle light mode
 function toggleLightMode() {
     document.body.classList.remove('dark-mode');
     document.body.classList.add('light-mode');
     localStorage.setItem('theme', 'light');
-    // switch icons
-    document.getElementById('darkModeToggle').style.display = 'none';
-    document.getElementById('lightModeToggle').style.display = 'block';
+    updateIcons();
     switchSongList();
+}
+
+// toggle dark mode
+function toggleDarkMode() {
+    document.body.classList.remove('light-mode');
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+    updateIcons();
+    switchSongList();
+}
+
+// function to update visibility of the icons
+function updateIcons() {
+    const lightModeToggle = document.getElementById('lightModeToggle');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    if (document.body.classList.contains('dark-mode')) {
+        lightModeToggle.style.display = 'block';
+        darkModeToggle.style.display = 'none';
+    } else {
+        lightModeToggle.style.display = 'none';
+        darkModeToggle.style.display = 'block';
+    }
 }
 
 // function to switch song list based on dark mode
