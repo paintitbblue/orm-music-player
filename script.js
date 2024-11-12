@@ -133,11 +133,8 @@ song.onended = function() {
 // toggle the visibility of the dropdown menu
 function toggleDropdown() {
     const songList = document.getElementById('songList');
-    if (songList.style.display === 'block') {
-        songList.style.display = 'none';
-    } else {
-        songList.style.display = 'block';
-    }
+    
+    songList.classList.toggle('show-dropdown');
 }
 
 // initialize theme on page load
@@ -151,28 +148,6 @@ window.onload = function () {
     updateIcons();
     loadSong(currentSongIndex);
 }
-
-// // toggle dark mode
-// function toggleDarkMode() {
-//     document.body.classList.remove('light-mode');
-//     document.body.classList.add('dark-mode');
-//     localStorage.setItem('theme', 'dark');
-//     // switch icons
-//     document.getElementById('darkModeToggle').style.display = 'none';
-//     document.getElementById('lightModeToggle').style.display = 'block'
-//     switchSongList();
-// }
-
-// // toggle light mode
-// function toggleLightMode() {
-//     document.body.classList.remove('dark-mode');
-//     document.body.classList.add('light-mode');
-//     localStorage.setItem('theme', 'light');
-//     // switch icons
-//     document.getElementById('darkModeToggle').style.display = 'none';
-//     document.getElementById('lightModeToggle').style.display = 'block';
-//     switchSongList();
-// }
 
 // toggle light mode
 function toggleLightMode() {
@@ -215,9 +190,9 @@ function switchSongList() {
     }
     currentSongIndex = 0;
     loadSong(currentSongIndex);
-    // populateSongList();
+    populateSongList();
 }
 
 // Load first song initially
 loadSong(currentSongIndex);
-// populateSongList();
+populateSongList();
